@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio Website</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/a1ac0a49a5.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="header">
+        <div class="container">
+         <nav>
+            <img src="images/logo1.png" class="logo">
+            <ul id="sidemenu">
+                <li><a href="#header">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <i class="fa-solid fa-circle-xmark" onclick="closemenu()"></i>
+                 </ul>
+                 <i class="fa-solid fa-bars" onclick="openmenu()"></i>
+         </nav>
+         <div class="header-text">
+            <p>Network Engineer</p>
+            <h1>Hi, I am <span>Ansh</span><br> Maheshwari from India</h1>
+         </div>   
+        </div>
+    </div>
+   <!--------------------------------about--------------->
+    <div id="about">
+    <div class="container">
+        <div class="row">
+            <div class="about-col-1">
+                <h1 class="sub-title">About Me</h1>
+                <p>Hello! I'm Ansh Maheshwari, a 19-year-old Network Engineer with a passion for exploring internet and networks.I'm always looking for new opportunities to learn and grow.I'm excited to share my work with you and I hope you'll take the time to explore my portfolio.</p>
+            <div class="tab-titles">
+                <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+                <p class="tab-links" onclick="opentab('Education')">Education</p>
+                <p class="tab-links"onclick="opentab('Professional courses')">Professional courses</p>
+                </div>
+                <div class="tab-contents active-tab" id='skills'>
+                    <ul>
+                        <li><span>Network Engineering</span><br>Routing and Swtiching </li>
+                        <li><span>Cyber Security</span><br>Ethical Hacking</li>
+                        <li><span>Cloud Engineering</span><br>Basic operating and monitoring Of Cloud Portals</li>
+                        <li><span>Web Development</span><br>Design and Development of Website Interfaces</li>
+                    </ul>
+                </div>
+                <div class="tab-contents" id="Education">
+                    <ul>
+                        <li><span>H.S.C</span><br>Seventh day Adventist school Ahmedabad-2020 </li>
+                        <li><span>S.S.C</span><br>Seventh day Adventist school Ahmedabad-2020</li>
+                        <li><span>BSC IT (Cyber-security)</span><br>Gujarat university (pursuing)</li>
+                        </ul>
+                </div>
+                <div class="tab-contents" id="Professional courses">
+                    <ul>
+                        <li><span>Cyber Security Expert</span><br>Ionx institute-2023</li>
+                        <li><span>CCNA 200-301</span><br>Ionx institute-2023</li>
+                        <li><span>AWS SAA 03</span><br>Ionx institute-2023</li>
+                        </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+   </div>
+   <!------------contact---------------------------------->
+<div id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="contact-left">
+                <h1 class="sub-title">Contact Me</h1>
+                <p><i class="fa-solid fa-paper-plane"></i></i>anshkmaheshwari04@gmail.com</p>
+                <p><i class="fa-solid fa-phone"></i>+917069152351</p>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/ansh_1215/"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+                <a href="images/Resume.pdf" download class="btn btn2">Download CV</a>
+            
+            
+            
+            
+            </div>
+            <div class="contact-right">
+                <form name="submit-to-google-sheet">
+                    <input type="text" name="Name" placeholder="Your Name" required>
+                    <input type="text" name="Email" placeholder="Your Email" required>
+                    <textarea name="Message"  rows="6" placeholder="Your Message"></textarea>
+                    <button type="submit" class="btn btn2">Submit</button>
+                </form>
+                <span id="msg"></span>
+            
+            </div>
+        </div>                              
+    </div>
+<div class="copright">
+    <p>Copyright © Ansh Maheshwari </p>
+</div>
+</div>
+
+
+
+
+    <script>
+var tablinks = document.getElementsByClassName("tab-links");
+var tabcontents = document.getElementsByClassName("tab-contents");
+
+function opentab(tabname){
+   for(tablink of tablinks){
+    tablink.classList.remove("active-link");
+   }
+   for(tabcontent of tabcontents){
+        tabcontent.classList.remove("active-tab");
+    }
+    event.currentTarget.classList.add("active-link");
+    document.getElementById(tabname).classList.add("active-tab");
+   }
+</script>
+
+<script>
+
+    var sidemenu = document.getElementById("sidemenu");
+
+    function openmenu(){
+        sidemenu.style.right='0';
+    }
+    function closemenu(){
+        sidemenu.style.right='-250px';
+    }
+</script>
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbyI3RMlLOrV0PdjQ1HRoQuEdp724tVp5L4Dw8AiOtuL77Ax685__RLE5W_cf5Tmu56D/exec'
+    const form = document.forms['submit-to-google-sheet']
+    const msg = document.getElementById("msg")
+  
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response =>{
+            msg.innerHTML = "Messgae sent successfully"
+           setTimeout(function(){
+            msg.innerHTML = ""
+           },5000)
+           form.reset()
+        })
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
+
+
+
+
+
+</body>
+</html>
